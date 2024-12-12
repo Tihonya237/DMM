@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -14,8 +15,8 @@ private:
 public:
 	void input(string name)
 	{
-		ifstream in(name);
-		in >> n >> m;
+		ifstream input(name);
+        input >> n >> m;
 
 		size = n + m;
 
@@ -23,13 +24,13 @@ public:
 		for (int i = 0; i < size; i++)
 			A[i].resize(m + 1);
 
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < n; i++){
 			for (int j = 0; j < m + 1; j++) {
-				in >> A[i][j];
+                input >> A[i][j];
 			}
 			A[i][m] *= -1;
 		}
-		in.close();
+        input.close();
 
 		for (int i = n, j = 0; i < size; i++, j++)
 			A[i][j] = 1;
@@ -126,30 +127,30 @@ public:
         return true;
 	}
 
-	void output(bool flag)
+	void output(string out, bool flag)
 	{
-		ofstream out("result.txt");
+		ofstream output(out);
         k = m - n;
 
         //Если число свободных переменных будет < 0, то нету решения
         if (k < 0)
             flag = false;
 
-        if (!flag ) {
-            out << "NO SOLUTIONS";
+        if (!flag) {
+            output << "NO SOLUTIONS";
 		}
 		else
 		{
-			out << k << endl;
+			output << k << endl;
 
             for (int i = n; i < size; i++) {
                 for (int j = m - k; j < m + 1; j++){
-                    out << A[i][j] << " ";
+                    output << A[i][j] << " ";
                 }
-                out << std::endl;
+                output << std::endl;
             }
 		}
-		out.close();
+		output.close();
 	}
 };
 
@@ -157,7 +158,7 @@ int main() {
 	
 	test ss;
 
-	ss.input("test.txt");
+	ss.input("input.txt");
     bool flag = ss.SLAE();
-	ss.output(flag);
+	ss.output("output.txt",flag);
 }
