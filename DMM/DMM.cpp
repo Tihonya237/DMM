@@ -16,8 +16,9 @@ private:
 public:
     void input(string name)
     {
-        ifstream input(name);
-        input >> n >> m;
+        //ifstream input(name);
+
+        cin >> n >> m;
 
         size = n + m;
 
@@ -32,12 +33,12 @@ public:
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m + 1; j++) {
-                input >> A[i][j];
+                cin >> A[i][j];
                 A_b[i][j] = A[i][j];
             }
             A[i][m] *= -1;
         }
-        input.close();
+        //input.close();
 
         for (int i = n, j = 0; i < size; i++, j++)
             A[i][j] = 1;
@@ -169,23 +170,24 @@ public:
 
     void output(string out, bool flag)
     {
-        ofstream output(out);
+        //ofstream output(out);
+        cout << endl;
 
         if (!flag) {
-            output << "NO SOLUTIONS";
+            cout << "NO SOLUTIONS";
         }
         else
         {
-            output << k << endl; // Выводим свободное число
+            cout << k << endl; // Выводим свободное число
 
             for (int i = n; i < size; i++) {
                 for (int j = m - k; j < m + 1; j++) {
-                    output << A[i][j] << " ";
+                    cout << A[i][j] << " ";
                 }
-                output << std::endl;
+                cout << std::endl;
             }
         }
-        output.close();
+        //output.close();
     }
 };
 
