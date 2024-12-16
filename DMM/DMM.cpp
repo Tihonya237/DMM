@@ -171,7 +171,6 @@ public:
     void output(string out, bool flag)
     {
         //ofstream output(out);
-        cout << endl;
 
         if (!flag) {
             cout << "NO SOLUTIONS";
