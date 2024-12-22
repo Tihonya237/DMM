@@ -198,7 +198,10 @@ int main() {
     bool flag = ss.SLAE();
 
     if(!flag)
+    {
         ss.output("output.txt", flag);
+        return 0;
+    }
 
     flag = ss.CheckTest();
 
